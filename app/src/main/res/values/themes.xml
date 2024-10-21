@@ -2,7 +2,9 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Arduino" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+         <item name="colorPrimary">#109ca1</item>
+        <item name="colorPrimaryDark">#068d92</item>
+        <item name="android:statusBarColor">#068d92</item>
     </style>
 
     <style name="Theme.Arduino" parent="Base.Theme.Arduino" />

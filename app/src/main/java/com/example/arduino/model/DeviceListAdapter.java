@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.arduino.MainActivity;
@@ -43,28 +44,25 @@ public class DeviceListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         itemHolder.textAddress.setText(deviceInfoModel.getDeviceHardwareAddress());
 
         // When a device is selected
-        itemHolder.linearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, MainActivity.class);
-                // Send device details to the MainActivity
-                intent.putExtra("deviceName", deviceInfoModel.getDeviceName());
-                intent.putExtra("deviceAddress",deviceInfoModel.getDeviceHardwareAddress());
-                // Call MainActivity
-                context.startActivity(intent);
-            }
+        itemHolder.deviceInfoCardView.setOnClickListener(view -> {
+            Intent intent = new Intent(context, MainActivity.class);
+            // Send device details to the MainActivity
+            intent.putExtra("deviceName", deviceInfoModel.getDeviceName());
+            intent.putExtra("deviceAddress",deviceInfoModel.getDeviceHardwareAddress());
+            // Call MainActivity
+            context.startActivity(intent);
         });
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView textName, textAddress;
-        LinearLayout linearLayout;
+        CardView deviceInfoCardView;
 
         public ViewHolder(View v) {
             super(v);
             textName = v.findViewById(R.id.textViewDeviceName);
             textAddress = v.findViewById(R.id.textViewDeviceAddress);
-            linearLayout = v.findViewById(R.id.linearLayoutDeviceInfo);
+            deviceInfoCardView = v.findViewById(R.id.device_info_card_view);
         }
     }
 

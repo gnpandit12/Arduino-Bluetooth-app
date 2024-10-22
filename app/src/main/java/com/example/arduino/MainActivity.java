@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         if (deviceName != null) {
             // Get the device address to make BT Connection
             deviceAddress = getIntent().getStringExtra("deviceAddress");
-            // Show progree and connection status
+            // Show progress and connection status
             toolbar.setSubtitle("Connecting to " + deviceName + "...");
             progressBar.setVisibility(View.VISIBLE);
             buttonConnect.setEnabled(false);
@@ -100,14 +100,13 @@ public class MainActivity extends AppCompatActivity {
                                 break;
                         }
                         break;
-
                     case MESSAGE_READ:
                         String arduinoMsg = msg.obj.toString(); // Read message from Arduino
                         switch (arduinoMsg.toLowerCase()){
-                            case "led is turned on":
+                            case "fan is turned on":
                                 textViewInfo.setText("Arduino Message : " + arduinoMsg);
                                 break;
-                            case "led is turned off":
+                            case "fan is turned off":
                                 textViewInfo.setText("Arduino Message : " + arduinoMsg);
                                 break;
                         }
